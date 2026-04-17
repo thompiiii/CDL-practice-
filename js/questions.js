@@ -132,4 +132,105 @@ window.CDL_QUESTIONS = [
     explanation: "Use an escape ramp — it's designed for that purpose. Don't hesitate; damage to the truck is preferable to a runaway."
   },
 
+  // --- 2. Transporting Cargo Safely ---
+  {
+    id: 13,
+    section: "Transporting Cargo Safely",
+    question: "Who is responsible for making sure cargo is properly loaded and secured on a commercial vehicle?",
+    choices: [
+      "The shipper only",
+      "The driver",
+      "The loading dock crew only",
+      "The consignee receiving the load"
+    ],
+    answer: 1,
+    explanation: "The driver is responsible for inspecting cargo, recognizing overloads and poor weight distribution, and making sure it stays secured during the trip."
+  },
+  {
+    id: 14,
+    section: "Transporting Cargo Safely",
+    question: "How soon after starting a trip must you inspect your cargo and its securement?",
+    choices: [
+      "Within the first 25 miles",
+      "Within the first 50 miles",
+      "Within the first 100 miles",
+      "Only at the destination"
+    ],
+    answer: 1,
+    explanation: "Inspect cargo within the first 50 miles, then again every 150 miles or 3 hours (whichever comes first), and any time you change duty status."
+  },
+  {
+    id: 15,
+    section: "Transporting Cargo Safely",
+    question: "What is the minimum number of tiedowns required to secure cargo, regardless of length?",
+    choices: ["1", "2", "3", "4"],
+    answer: 1,
+    explanation: "At least 2 tiedowns are required, and you must use at least one tiedown for every 10 feet of cargo."
+  },
+  {
+    id: 16,
+    section: "Transporting Cargo Safely",
+    question: "GVWR stands for:",
+    choices: [
+      "Gross Vehicle Width Rating",
+      "Gross Vehicle Weight Rating",
+      "Graded Vehicle Weight Ratio",
+      "Governed Vehicle Wheel Rating"
+    ],
+    answer: 1,
+    explanation: "GVWR = Gross Vehicle Weight Rating: the maximum total weight (vehicle + load) specified by the manufacturer."
+  },
+  {
+    id: 17,
+    section: "Transporting Cargo Safely",
+    question: "Placing heavy cargo high on the trailer mainly increases the risk of:",
+    choices: [
+      "Brake fade",
+      "Rollover in turns and curves",
+      "Tire under-inflation",
+      "Hydroplaning"
+    ],
+    answer: 1,
+    explanation: "A high center of gravity makes the vehicle much more likely to roll over, especially on curves and exit ramps. Load heavy items low."
+  },
+  {
+    id: 18,
+    section: "Transporting Cargo Safely",
+    question: "You are hauling a sealed trailer load. What is still your responsibility?",
+    choices: [
+      "Breaking the seal to inspect individual pieces",
+      "Making sure the vehicle is not overloaded and its weight is within legal limits",
+      "Only delivering it on time",
+      "Re-packing any loose items"
+    ],
+    answer: 1,
+    explanation: "You cannot inspect a sealed load's contents, but you are still responsible for not exceeding weight limits and for the external condition of the vehicle."
+  },
+  {
+    id: 19,
+    section: "Transporting Cargo Safely",
+    question: "What is the main purpose of a header board (\"headache rack\")?",
+    choices: [
+      "To improve aerodynamics",
+      "To protect the driver from cargo that might shift forward in a crash",
+      "To mount extra lights",
+      "To carry spare tires"
+    ],
+    answer: 1,
+    explanation: "A header board, or headache rack, blocks forward movement of cargo so it doesn't crush the cab in a sudden stop or crash."
+  },
+  {
+    id: 20,
+    section: "Transporting Cargo Safely",
+    question: "A partially filled liquid tanker is harder to control because of:",
+    choices: [
+      "Brake lag",
+      "Liquid surge",
+      "Off-tracking",
+      "Rearward amplification"
+    ],
+    answer: 1,
+    explanation: "Liquid surge — the forward and backward movement of the load — can push the vehicle in the direction of the wave, especially when stopping."
+  },
+
 ];
