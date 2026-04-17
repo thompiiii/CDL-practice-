@@ -1,0 +1,102 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Practice Test — Oregon CDL Class A</title>
+<link rel="stylesheet" href="css/styles.css" />
+</head>
+<body>
+<header class="site-header">
+  <div class="container">
+    <a class="brand" href="index.html">Oregon CDL Class A</a>
+    <nav class="site-nav">
+      <a href="study.html">Study Guide</a>
+      <a href="practice.html">Practice Test</a>
+    </nav>
+  </div>
+</header>
+
+<main class="container">
+  <!-- Intro screen, shown before the test starts -->
+  <section id="intro-screen" class="card">
+    <h1>Practice Test</h1>
+    <p>
+      50 multiple-choice questions mirroring the Oregon CDL Class A general
+      knowledge exam. You'll get <strong>immediate feedback</strong> after each
+      question, and a pass/fail summary at the end (80% to pass).
+    </p>
+    <ul class="plain-list">
+      <li>Questions are drawn from Driving Safely, Cargo, Air Brakes, Combination Vehicles, Inspection, and Basic Control.</li>
+      <li>Question and answer order are shuffled each session.</li>
+      <li>Keyboard shortcuts: press <kbd>1</kbd>–<kbd>4</kbd> to pick a choice, <kbd>Enter</kbd> or <kbd>N</kbd> for the next question.</li>
+    </ul>
+    <div class="cta-row">
+      <button id="start-btn" class="btn btn-primary" type="button">Start 50-Question Test</button>
+      <a class="btn btn-secondary" href="study.html">Back to Study Guide</a>
+    </div>
+  </section>
+
+  <!-- In-test screen -->
+  <section id="test-screen" class="hidden">
+    <div class="test-header">
+      <div class="progress-wrap">
+        <div class="progress-label">
+          <span id="progress-text">Question 1 of 50</span>
+          <span id="score-text">0 / 0 correct</span>
+        </div>
+        <div class="progress-bar" aria-hidden="true">
+          <div id="progress-fill" class="progress-fill"></div>
+        </div>
+      </div>
+    </div>
+
+    <article class="question-card" aria-live="polite">
+      <span id="question-section" class="section-tag">Section</span>
+      <h2 id="question-text" class="question-text">Loading…</h2>
+
+      <ul id="choice-list" class="choice-list" role="list">
+        <!-- Choice buttons rendered by practice.js -->
+      </ul>
+
+      <div id="feedback" class="feedback hidden"></div>
+
+      <div class="test-actions">
+        <button id="next-btn" class="btn btn-primary" type="button" disabled>Next</button>
+      </div>
+    </article>
+  </section>
+
+  <!-- Summary screen, shown at end -->
+  <section id="summary-screen" class="hidden">
+    <div class="card" style="text-align:center;">
+      <h1>Results</h1>
+      <p id="summary-score" class="summary-score">0 / 0</p>
+      <p id="summary-percent" class="summary-sub">0% correct</p>
+      <div id="summary-verdict" class="verdict">—</div>
+      <p class="summary-sub" style="margin-top:18px;">
+        Passing score on the real test is 80% (40 of 50).
+      </p>
+      <div class="cta-row" style="justify-content:center;">
+        <button id="retake-btn" class="btn btn-primary" type="button">Retake Test</button>
+        <a class="btn btn-secondary" href="study.html">Back to Study Guide</a>
+      </div>
+    </div>
+
+    <div id="missed-wrap" class="card hidden">
+      <h2>Review: Missed Questions</h2>
+      <div id="missed-list"></div>
+    </div>
+  </section>
+</main>
+
+<footer class="site-footer">
+  <div class="container">
+    <small>Study aid for personal CDL prep. Not affiliated with Oregon DMV.</small>
+  </div>
+</footer>
+
+<script src="js/questions.js"></script>
+<script src="js/practice.js"></script>
+</body>
+</html>
