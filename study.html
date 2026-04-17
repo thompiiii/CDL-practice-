@@ -4,6 +4,14 @@
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Study Guide — Oregon CDL Class A</title>
+<script>
+  (function () {
+    try {
+      var t = localStorage.getItem("cdl-theme");
+      if (t === "light" || t === "dark") document.documentElement.setAttribute("data-theme", t);
+    } catch (e) {}
+  })();
+</script>
 <link rel="stylesheet" href="css/styles.css" />
 </head>
 <body>
@@ -13,6 +21,7 @@
     <nav class="site-nav">
       <a href="study.html">Study Guide</a>
       <a href="practice.html">Practice Test</a>
+      <button type="button" class="theme-toggle" aria-label="Switch theme">Theme</button>
     </nav>
   </div>
 </header>
@@ -361,5 +370,7 @@
     <small>Study aid for personal CDL prep. Not affiliated with Oregon DMV.</small>
   </div>
 </footer>
+
+<script src="js/theme.js" defer></script>
 </body>
 </html>

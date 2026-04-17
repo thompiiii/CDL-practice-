@@ -25,8 +25,41 @@
   --key-bg: #eef2f7;
 }
 
+/* Dark palette — applied when the user manually picks dark. */
+:root[data-theme="dark"] {
+  color-scheme: dark;
+  --bg: #0f1317;
+  --surface: #171c22;
+  --border: #2a323c;
+  --text: #e7edf3;
+  --muted: #9aa4af;
+  --accent: #4ea3e0;
+  --accent-dark: #85c1ec;
+  --correct: #4cbd7a;
+  --correct-bg: #16301f;
+  --correct-text: #a8e6c0;
+  --correct-border: #27533a;
+  --wrong: #e17266;
+  --wrong-bg: #331c18;
+  --wrong-text: #f1b3ab;
+  --wrong-border: #5c2e27;
+  --warn-bg: #2e2613;
+  --warn-border: #6a5a24;
+
+  --track: #242c36;
+  --hover: #1f2630;
+  --secondary-hover: #1d2732;
+  --key-bg: #242c36;
+}
+:root[data-theme="dark"] .btn-primary { color: #0b1116; }
+
+:root[data-theme="light"] { color-scheme: light; }
+
+/* Same dark palette applied automatically when the OS prefers dark
+   AND the user has not manually chosen a theme. */
 @media (prefers-color-scheme: dark) {
-  :root {
+  :root:not([data-theme="light"]):not([data-theme="dark"]) {
+    color-scheme: dark;
     --bg: #0f1317;
     --surface: #171c22;
     --border: #2a323c;
@@ -50,9 +83,43 @@
     --secondary-hover: #1d2732;
     --key-bg: #242c36;
   }
+  :root:not([data-theme="light"]):not([data-theme="dark"]) .btn-primary { color: #0b1116; }
+}
 
-  .btn-primary { color: #0b1116; }
-  .btn-secondary { color: var(--accent-dark); }
+/* Theme toggle button in the header */
+.theme-toggle {
+  background: transparent;
+  border: 1px solid var(--border);
+  color: var(--text);
+  padding: 6px 12px;
+  border-radius: 999px;
+  font: inherit;
+  font-size: 0.85rem;
+  cursor: pointer;
+  margin-left: 16px;
+}
+.theme-toggle:hover { background: var(--hover); }
+.theme-toggle:focus-visible {
+  outline: 3px solid var(--accent);
+  outline-offset: 2px;
+}
+
+/* Theme toggle button in the header */
+.theme-toggle {
+  background: transparent;
+  border: 1px solid var(--border);
+  color: var(--text);
+  padding: 6px 12px;
+  border-radius: 999px;
+  font: inherit;
+  font-size: 0.85rem;
+  cursor: pointer;
+  margin-left: 16px;
+}
+.theme-toggle:hover { background: var(--hover); }
+.theme-toggle:focus-visible {
+  outline: 3px solid var(--accent);
+  outline-offset: 2px;
 }
 
 * { box-sizing: border-box; }
