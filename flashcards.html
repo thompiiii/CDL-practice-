@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Flashcards — Oregon CDL Class A</title>
+<script>
+  (function () {
+    try {
+      var t = localStorage.getItem("cdl-theme");
+      if (t === "light" || t === "dark") document.documentElement.setAttribute("data-theme", t);
+    } catch (e) {}
+  })();
+</script>
+<link rel="stylesheet" href="css/styles.css" />
+</head>
+<body>
+<header class="site-header">
+  <div class="container">
+    <a class="brand" href="index.html">Oregon CDL Class A</a>
+    <nav class="site-nav">
+      <a href="study.html">Study Guide</a>
+      <a href="flashcards.html">Flashcards</a>
+      <a href="practice.html">Practice Test</a>
+      <button type="button" class="theme-toggle" aria-label="Switch theme">Theme</button>
+    </nav>
+  </div>
+</header>
+
+<main class="container">
+  <h1>Flashcards</h1>
+  <p class="lede">
+    Tap the card (or press <kbd>Space</kbd>) to flip. Use the arrows
+    or <kbd>←</kbd> / <kbd>→</kbd> to move between cards.
+  </p>
+
+  <div class="flashcard-toolbar">
+    <label class="filter-label">
+      Section
+      <select id="section-filter">
+        <option value="">All sections</option>
+      </select>
+    </label>
+    <button id="shuffle-btn" type="button" class="btn btn-secondary">Shuffle</button>
+  </div>
+
+  <div class="card-stage">
+    <button id="flashcard" type="button" class="flashcard" aria-pressed="false">
+      <div class="flashcard-inner">
+        <div class="flashcard-face flashcard-front">
+          <span class="card-section-tag" id="card-section">Section</span>
+          <p class="card-text" id="card-front">Loading…</p>
+          <span class="card-hint">Tap to flip</span>
+        </div>
+        <div class="flashcard-face flashcard-back">
+          <span class="card-section-tag" id="card-section-back">Section</span>
+          <p class="card-text" id="card-back">Loading…</p>
+          <span class="card-hint">Tap to flip back</span>
+        </div>
+      </div>
+    </button>
+  </div>
+
+  <div class="card-controls">
+    <button id="prev-btn" type="button" class="btn btn-secondary" aria-label="Previous card">←</button>
+    <span id="card-counter" class="card-counter">0 / 0</span>
+    <button id="next-btn" type="button" class="btn btn-secondary" aria-label="Next card">→</button>
+  </div>
+</main>
+
+<footer class="site-footer">
+  <div class="container">
+    <small>Study aid for personal CDL prep. Not affiliated with Oregon DMV.</small>
+  </div>
+</footer>
+
+<script src="js/theme.js" defer></script>
+<script src="js/flashcard-data.js"></script>
+<script src="js/flashcards.js"></script>
+</body>
+</html>
