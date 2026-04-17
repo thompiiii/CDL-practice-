@@ -497,4 +497,97 @@ window.CDL_QUESTIONS = [
     explanation: "Turn wide as you complete the turn — keep the rear close to the curb so cars can't pass you on the right, then swing wide enough that the trailer clears the corner."
   },
 
+  // --- 5. Vehicle Inspection ---
+  {
+    id: 41,
+    section: "Vehicle Inspection",
+    question: "What is the most important reason to inspect your vehicle?",
+    choices: [
+      "It is a company policy",
+      "Safety — for you and other road users",
+      "To make a good impression on dispatchers",
+      "To keep the paint clean"
+    ],
+    answer: 1,
+    explanation: "Safety is the main reason: defects cause crashes and breakdowns. Inspection is also required by federal and state regulations."
+  },
+  {
+    id: 42,
+    section: "Vehicle Inspection",
+    question: "What is the minimum legal tread depth on a steering (front) axle tire?",
+    choices: [
+      "1/32 inch",
+      "2/32 inch",
+      "4/32 inch",
+      "6/32 inch"
+    ],
+    answer: 2,
+    explanation: "Steering axle tires must have at least 4/32\" tread. All other tires must have at least 2/32\"."
+  },
+  {
+    id: 43,
+    section: "Vehicle Inspection",
+    question: "Which item is NOT required emergency equipment in a commercial vehicle?",
+    choices: [
+      "A charged fire extinguisher",
+      "Three reflective triangles",
+      "Spare electrical fuses (unless the vehicle has circuit breakers)",
+      "A first-aid kit"
+    ],
+    answer: 3,
+    explanation: "The required emergency equipment is: fire extinguisher, 3 reflective triangles, and spare fuses (if the vehicle uses them). A first-aid kit is good practice but not federally required."
+  },
+  {
+    id: 44,
+    section: "Vehicle Inspection",
+    question: "Which is a sign of bad brake drums or shoes that should put the vehicle out of service?",
+    choices: [
+      "A small amount of brake dust on the wheel",
+      "Cracks in the drum extending completely across the friction surface",
+      "Light rust on the exterior of the drum",
+      "A slightly shiny appearance on the drum"
+    ],
+    answer: 1,
+    explanation: "A crack that goes all the way across the friction surface of a drum is a serious defect and will put the vehicle out of service."
+  },
+  {
+    id: 45,
+    section: "Vehicle Inspection",
+    question: "When during a trip are you required to inspect your vehicle?",
+    choices: [
+      "Only before the trip starts",
+      "Before the trip, during the trip, and after the trip",
+      "Only after the trip",
+      "Only when the engine warning light comes on"
+    ],
+    answer: 1,
+    explanation: "You must do a pre-trip inspection, monitor the vehicle en-route, and complete a post-trip inspection with a written DVIR listing any defects."
+  },
+  {
+    id: 46,
+    section: "Vehicle Inspection",
+    question: "During your pre-trip, you find an audible air leak from the brake system. You should:",
+    choices: [
+      "Ignore it if pressure still builds",
+      "Drive carefully until you reach a shop",
+      "Not drive — fix the leak first",
+      "Tape the leak and continue"
+    ],
+    answer: 2,
+    explanation: "An audible air leak is a serious defect. Don't drive the vehicle until the leak is repaired — loss of air can disable the brakes."
+  },
+  {
+    id: 47,
+    section: "Vehicle Inspection",
+    question: "What gauges or indicators should you monitor while driving?",
+    choices: [
+      "Speedometer only",
+      "Speedometer, fuel, oil pressure, coolant temperature, and air pressure (if equipped)",
+      "Only the fuel gauge",
+      "None — just focus on the road"
+    ],
+    answer: 1,
+    explanation: "Scan your instrument panel regularly: speedometer, fuel, oil pressure, coolant temp, voltmeter/ammeter, and (for air brakes) air pressure."
+  },
+
 ];
