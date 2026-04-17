@@ -590,4 +590,71 @@ window.CDL_QUESTIONS = [
     explanation: "Scan your instrument panel regularly: speedometer, fuel, oil pressure, coolant temp, voltmeter/ammeter, and (for air brakes) air pressure."
   },
 
+  // --- 6. Basic Vehicle Control & Skills ---
+  {
+    id: 48,
+    section: "Basic Vehicle Control",
+    question: "\"GOAL\" stands for:",
+    choices: [
+      "Gauge, Observe, Adjust, Log",
+      "Get Out And Look",
+      "Go On At Low-speed",
+      "Good Order At Landing"
+    ],
+    answer: 1,
+    explanation: "GOAL — Get Out And Look — reminds drivers to step out and physically check behind and around the vehicle before backing or in any tight situation."
+  },
+  {
+    id: 49,
+    section: "Basic Vehicle Control",
+    question: "How often should you check your mirrors while driving?",
+    choices: [
+      "Only when changing lanes",
+      "Every 5 to 8 seconds",
+      "Once a minute",
+      "Only at intersections"
+    ],
+    answer: 1,
+    explanation: "Scan your mirrors regularly — about every 5–8 seconds — and especially before any lane change, turn, or braking maneuver."
+  },
+  {
+    id: 50,
+    section: "Basic Vehicle Control",
+    question: "In the CDL skills test, what counts as an \"encroachment\"?",
+    choices: [
+      "Stopping too early",
+      "Crossing or touching a boundary line with the vehicle or a tire",
+      "Failing to signal",
+      "Honking the horn"
+    ],
+    answer: 1,
+    explanation: "An encroachment is when any part of the vehicle crosses a boundary line during a maneuver. Examiners also score pull-ups and final position."
+  },
+  {
+    id: 51,
+    section: "Basic Vehicle Control",
+    question: "If you're driving a bus or a vehicle carrying hazmat placards, how far before a railroad crossing must you stop?",
+    choices: [
+      "5 to 10 feet before the tracks",
+      "15 to 50 feet before the tracks",
+      "100 feet before the tracks",
+      "You don't need to stop — just slow down"
+    ],
+    answer: 1,
+    explanation: "Buses and placarded hazmat vehicles must stop 15 to 50 feet before the nearest rail, look and listen, then cross only when safe."
+  },
+  {
+    id: 52,
+    section: "Basic Vehicle Control",
+    question: "When is the best time to adjust your mirrors?",
+    choices: [
+      "While driving, one at a time",
+      "Before you start driving",
+      "Only at the start of each week",
+      "Only if someone else drove the truck"
+    ],
+    answer: 1,
+    explanation: "Adjust mirrors before you start driving. Adjusting them while moving is distracting and unsafe."
+  },
+
 ];
