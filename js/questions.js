@@ -233,4 +233,162 @@ window.CDL_QUESTIONS = [
     explanation: "Liquid surge — the forward and backward movement of the load — can push the vehicle in the direction of the wave, especially when stopping."
   },
 
+  // --- 3. Air Brakes ---
+  {
+    id: 21,
+    section: "Air Brakes",
+    question: "At what air pressure must the low-air-pressure warning device come on?",
+    choices: [
+      "Before pressure drops below 100 psi",
+      "Before pressure drops below 80 psi",
+      "Before pressure drops below 60 psi",
+      "Before pressure drops below 20 psi"
+    ],
+    answer: 2,
+    explanation: "The low-air-pressure warning must activate before pressure drops below 60 psi in the air tank."
+  },
+  {
+    id: 22,
+    section: "Air Brakes",
+    question: "In a typical air brake system, the spring (parking) brakes will come on automatically when air pressure drops to:",
+    choices: [
+      "80–90 psi",
+      "60–75 psi",
+      "20–45 psi",
+      "0–5 psi"
+    ],
+    answer: 2,
+    explanation: "Spring brakes apply automatically when pressure falls into the 20–45 psi range, stopping the vehicle before brakes are lost entirely."
+  },
+  {
+    id: 23,
+    section: "Air Brakes",
+    question: "What is the purpose of the governor in an air brake system?",
+    choices: [
+      "It controls how hard the brakes apply",
+      "It controls when the air compressor pumps air into the tanks",
+      "It limits vehicle top speed",
+      "It adjusts trailer air pressure separately"
+    ],
+    answer: 1,
+    explanation: "The governor controls the compressor, cutting it in around 100 psi and out around 125 psi so the tanks stay within a safe range."
+  },
+  {
+    id: 24,
+    section: "Air Brakes",
+    question: "How often should air tanks be drained?",
+    choices: [
+      "Every week",
+      "Every month",
+      "Daily (end of each day of operation)",
+      "Only during scheduled maintenance"
+    ],
+    answer: 2,
+    explanation: "Drain air tanks daily. Water and compressor oil collect in them and can freeze or damage the system."
+  },
+  {
+    id: 25,
+    section: "Air Brakes",
+    question: "During the static air leak test on a combination vehicle (engine off, brakes released, fully charged), maximum allowed pressure drop is:",
+    choices: [
+      "1 psi per minute",
+      "2 psi per minute",
+      "3 psi per minute",
+      "5 psi per minute"
+    ],
+    answer: 2,
+    explanation: "For a combination vehicle, leakage must not exceed 3 psi per minute. For a single vehicle, the limit is 2 psi per minute."
+  },
+  {
+    id: 26,
+    section: "Air Brakes",
+    question: "In a dual air brake system, how long should it take to build pressure from 85 to 100 psi?",
+    choices: [
+      "45 seconds or less",
+      "2 minutes or less",
+      "5 minutes or less",
+      "As long as the engine is at idle"
+    ],
+    answer: 0,
+    explanation: "In a dual system, pressure should build from 85 to 100 psi in 45 seconds or less at normal operating engine speed."
+  },
+  {
+    id: 27,
+    section: "Air Brakes",
+    question: "Which braking method is used only in an emergency when the vehicle does NOT have antilock brakes?",
+    choices: [
+      "Controlled (threshold) braking",
+      "Stab braking",
+      "Engine braking",
+      "Pumping lightly"
+    ],
+    answer: 1,
+    explanation: "Stab braking — apply the brakes fully, release when wheels lock, reapply — is an emergency technique for non-ABS vehicles."
+  },
+  {
+    id: 28,
+    section: "Air Brakes",
+    question: "Air brakes have \"brake lag.\" About how long is the lag before the brakes actually apply?",
+    choices: [
+      "No lag — they apply instantly",
+      "About one-half second",
+      "About 2 seconds",
+      "About 5 seconds"
+    ],
+    answer: 1,
+    explanation: "Air brakes lag about half a second because the air has to travel through the lines. Build this into your following distance."
+  },
+  {
+    id: 29,
+    section: "Air Brakes",
+    question: "Before driving a vehicle with a dual air brake system, air pressure in both systems should be at least:",
+    choices: [
+      "60 psi",
+      "80 psi",
+      "100 psi",
+      "125 psi"
+    ],
+    answer: 2,
+    explanation: "Let pressure build up to at least 100 psi in both systems before driving."
+  },
+  {
+    id: 30,
+    section: "Air Brakes",
+    question: "You should NOT set the parking brake when:",
+    choices: [
+      "The vehicle is parked on level ground",
+      "The brakes are very hot, or wet and about to freeze",
+      "You are leaving the vehicle unattended",
+      "You are stopped for a rest break"
+    ],
+    answer: 1,
+    explanation: "Don't set the parking brake if the brakes are very hot (from a long downhill) or if they are wet and could freeze — damage can result."
+  },
+  {
+    id: 31,
+    section: "Air Brakes",
+    question: "What does the supply pressure gauge show?",
+    choices: [
+      "Pressure being applied to the service brakes",
+      "Air pressure in the storage tanks (the reservoirs)",
+      "Tire pressure",
+      "Engine oil pressure"
+    ],
+    answer: 1,
+    explanation: "The supply (or reservoir) pressure gauge shows the air pressure in the tanks. The application gauge shows how much pressure you are applying with the brake pedal."
+  },
+  {
+    id: 32,
+    section: "Air Brakes",
+    question: "Brake drums overheating because of continuous brake application on a long downgrade is called:",
+    choices: [
+      "Brake lag",
+      "Brake fade",
+      "Brake surge",
+      "Brake drag"
+    ],
+    answer: 1,
+    explanation: "Brake fade is loss of braking effectiveness caused by overheating. Use a low gear and light, steady pressure rather than \"fanning\" the brakes."
+  },
+
 ];
