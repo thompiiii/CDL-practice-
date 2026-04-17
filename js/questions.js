@@ -391,4 +391,110 @@ window.CDL_QUESTIONS = [
     explanation: "Brake fade is loss of braking effectiveness caused by overheating. Use a low gear and light, steady pressure rather than \"fanning\" the brakes."
   },
 
+  // --- 4. Combination Vehicles ---
+  {
+    id: 33,
+    section: "Combination Vehicles",
+    question: "The tendency of a trailer's wheels to follow a shorter path than the tractor's wheels during a turn is called:",
+    choices: [
+      "Rearward amplification",
+      "Off-tracking",
+      "Jackknifing",
+      "Oversteer"
+    ],
+    answer: 1,
+    explanation: "Off-tracking — the trailer wheels cut inside the tractor's path — is why you must swing wide when making tight right turns."
+  },
+  {
+    id: 34,
+    section: "Combination Vehicles",
+    question: "\"Rearward amplification\" is most dangerous because:",
+    choices: [
+      "It makes the brake pedal feel softer",
+      "A small steering input at the tractor becomes a much larger movement at the rear trailer, risking rollover",
+      "It shortens stopping distance",
+      "It overloads the front axle"
+    ],
+    answer: 1,
+    explanation: "Rearward amplification — the \"crack-the-whip\" effect — means sudden steering gets amplified at the trailer. Steer gently, especially with doubles or triples."
+  },
+  {
+    id: 35,
+    section: "Combination Vehicles",
+    question: "Antilock brakes (ABS) on your combination vehicle:",
+    choices: [
+      "Shorten stopping distance",
+      "Help you keep steering control during hard braking",
+      "Replace normal service brakes",
+      "Let you brake harder on ice without slowing down"
+    ],
+    answer: 1,
+    explanation: "ABS keeps wheels from locking up, preserving steering control. It does NOT shorten stopping distance — brake normally and let ABS do its job."
+  },
+  {
+    id: 36,
+    section: "Combination Vehicles",
+    question: "When coupling a tractor to a trailer, the correct trailer height is:",
+    choices: [
+      "High enough that the tractor slides under with no contact",
+      "Low enough that the tractor will raise the trailer slightly as it backs under",
+      "At the same height as the fifth wheel, exactly",
+      "Height doesn't matter"
+    ],
+    answer: 1,
+    explanation: "The trailer should be just low enough that the tractor raises it a bit as the tractor backs under. Too high and the kingpin can miss the jaws."
+  },
+  {
+    id: 37,
+    section: "Combination Vehicles",
+    question: "The two air lines between tractor and trailer are:",
+    choices: [
+      "Red = service, Blue = emergency",
+      "Red = emergency, Blue = service",
+      "Red = supply, Green = return",
+      "Yellow = primary, Black = secondary"
+    ],
+    answer: 1,
+    explanation: "Red is the emergency (supply) line; blue is the service line that applies the trailer brakes when you use the pedal."
+  },
+  {
+    id: 38,
+    section: "Combination Vehicles",
+    question: "After coupling, how do you test that the fifth wheel is locked onto the kingpin?",
+    choices: [
+      "Raise the landing gear fully and listen for a click",
+      "Pull forward gently against the locked trailer brakes (tug test)",
+      "Honk the horn three times",
+      "Check only that the air lines are connected"
+    ],
+    answer: 1,
+    explanation: "With the trailer brakes set, put the tractor in low gear and pull gently forward. The coupling should hold. Then visually inspect the locking jaws under the trailer."
+  },
+  {
+    id: 39,
+    section: "Combination Vehicles",
+    question: "Before uncoupling a loaded trailer, you should:",
+    choices: [
+      "Disconnect the air lines before lowering the landing gear",
+      "Lower the landing gear until it just touches the ground, then add turns for a loaded trailer",
+      "Lower the landing gear as fast as possible",
+      "Pull forward before lowering anything"
+    ],
+    answer: 1,
+    explanation: "Lower the landing gear until it firmly contacts the ground. For a loaded trailer, crank a few extra turns so the legs support the weight before the tractor pulls away."
+  },
+  {
+    id: 40,
+    section: "Combination Vehicles",
+    question: "When making a right turn in a combination vehicle, you should:",
+    choices: [
+      "Swing into the left lane first so you can make a tighter turn",
+      "Turn wide as you complete the turn, keeping the rear of the vehicle close to the curb",
+      "Cross the center line before starting the turn",
+      "Make the turn fast so the trailer can't catch up"
+    ],
+    answer: 1,
+    explanation: "Turn wide as you complete the turn — keep the rear close to the curb so cars can't pass you on the right, then swing wide enough that the trailer clears the corner."
+  },
+
 ];
