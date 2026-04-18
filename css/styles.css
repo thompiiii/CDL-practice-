@@ -599,14 +599,24 @@ html, body {
 
 /* Highlighter — manual text highlights in the study guide */
 .study-body .hl {
-  background: var(--warn-bg);
-  color: inherit; /* override <mark>'s user-agent black so dark-mode text stays light */
-  border-radius: 3px;
+  background: #ffe566;
+  color: #1a1600; /* dark text on bright yellow, like a real marker */
+  border-radius: 2px;
   padding: 0 2px;
-  box-shadow: inset 0 -2px 0 var(--warn-border);
   cursor: pointer;
 }
-.study-body .hl:hover { filter: brightness(0.97); }
+:root[data-theme="dark"] .study-body .hl,
+:root:not([data-theme="light"]):not([data-theme="dark"]) .study-body .hl {
+  background: rgba(255, 220, 0, 0.35); /* semi-transparent so the light text shows through */
+  color: inherit;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]):not([data-theme="dark"]) .study-body .hl {
+    background: rgba(255, 220, 0, 0.35);
+    color: inherit;
+  }
+}
+.study-body .hl:hover { filter: brightness(0.9); }
 
 .hl-popup {
   position: absolute;
