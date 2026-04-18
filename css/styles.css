@@ -599,24 +599,13 @@ html, body {
 
 /* Highlighter — manual text highlights in the study guide */
 .study-body .hl {
-  background: #ffe566;
-  color: #1a1600; /* dark text on bright yellow, like a real marker */
-  border-radius: 2px;
-  padding: 0 2px;
+  background-color: #ffff00; /* pure yellow, matches Word's default highlight */
+  color: #000;
+  padding: 0;
+  border-radius: 0;
   cursor: pointer;
 }
-:root[data-theme="dark"] .study-body .hl,
-:root:not([data-theme="light"]):not([data-theme="dark"]) .study-body .hl {
-  background: rgba(255, 220, 0, 0.35); /* semi-transparent so the light text shows through */
-  color: inherit;
-}
-@media (prefers-color-scheme: dark) {
-  :root:not([data-theme="light"]):not([data-theme="dark"]) .study-body .hl {
-    background: rgba(255, 220, 0, 0.35);
-    color: inherit;
-  }
-}
-.study-body .hl:hover { filter: brightness(0.9); }
+.study-body .hl:hover { filter: brightness(0.95); }
 
 .hl-popup {
   position: absolute;
