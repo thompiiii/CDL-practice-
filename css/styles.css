@@ -465,9 +465,134 @@ html, body {
   text-align: center;
 }
 
+/* Flashcards */
+.flashcard-toolbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin: 18px 0 16px;
+}
+.filter-label {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--muted);
+  font-size: 0.92rem;
+}
+.filter-label select {
+  font: inherit;
+  color: var(--text);
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 6px 10px;
+}
+
+.card-stage {
+  perspective: 1200px;
+  margin: 10px 0 20px;
+}
+.flashcard {
+  display: block;
+  width: 100%;
+  min-height: 260px;
+  background: transparent;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  font: inherit;
+  color: inherit;
+  text-align: left;
+}
+.flashcard:focus-visible {
+  outline: 3px solid var(--accent);
+  outline-offset: 4px;
+  border-radius: 14px;
+}
+.flashcard-inner {
+  position: relative;
+  width: 100%;
+  min-height: 260px;
+  transition: transform 0.5s cubic-bezier(.25,.8,.25,1);
+  transform-style: preserve-3d;
+}
+.flashcard[aria-pressed="true"] .flashcard-inner {
+  transform: rotateY(180deg);
+}
+.flashcard-face {
+  position: absolute;
+  inset: 0;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  padding: 24px 22px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  box-shadow: 0 1px 2px rgba(0,0,0,0.03);
+}
+.flashcard-back {
+  transform: rotateY(180deg);
+  background: var(--correct-bg);
+  border-color: var(--correct-border);
+}
+.card-section-tag {
+  display: inline-block;
+  align-self: flex-start;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--muted);
+  background: var(--key-bg);
+  padding: 3px 10px;
+  border-radius: 999px;
+}
+.card-text {
+  font-size: 1.25rem;
+  line-height: 1.4;
+  font-weight: 600;
+  margin: 14px 0;
+  flex: 1;
+  display: flex;
+  align-items: center;
+}
+.flashcard-back .card-text {
+  color: var(--correct-text);
+  font-weight: 500;
+}
+.card-hint {
+  font-size: 0.82rem;
+  color: var(--muted);
+  text-align: right;
+}
+
+.card-controls {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+  margin: 12px 0 4px;
+}
+.card-controls .btn {
+  min-width: 56px;
+  padding: 10px 14px;
+}
+.card-counter {
+  font-variant-numeric: tabular-nums;
+  color: var(--muted);
+  font-size: 0.95rem;
+  min-width: 80px;
+  text-align: center;
+}
+
 @media (max-width: 480px) {
   .hero h1 { font-size: 1.55rem; }
   .question-card { padding: 16px; }
   .btn { width: 100%; }
   .cta-row { flex-direction: column; }
+  .card-controls .btn { width: auto; }
 }
