@@ -3,16 +3,21 @@
 // - Select text inside a .study-body → a "Highlight" popup appears near the selection.
 //   Clicking it wraps the selection with <mark class="hl">.
 // - Tap/click an existing highlight to remove it.
-// - After any change, the innerHTML of each section's .study-body is saved under
-//   localStorage["cdl-highlights"]. A VERSION tag lets us invalidate stored HTML
-//   if the page content changes in a breaking way.
 // - A "Clear highlights" button on the page wipes everything for this page.
+//
+// Persistence: highlights are stored as plain-text character offsets into each
+// section — {sectionId: [{start, end, text}]} — NOT as rendered HTML. Storing
+// HTML meant any later edit to the study guide was silently reverted for anyone
+// with saved highlights (the stale markup was written straight back over the
+// live content), and it made localStorage an HTML-injection sink, which matters
+// because every project on a github.io account shares one origin. Offsets are
+// inert data: the `text` copy is only ever compared, never inserted.
 
 (function () {
   "use strict";
 
   const STORAGE_KEY = "cdl-highlights";
-  const VERSION = "1";
+  const VERSION = "2";
 
   const bodies = Array.from(document.querySelectorAll(".study-section"));
   if (bodies.length === 0) return;
@@ -175,15 +180,67 @@
     parent.normalize();
   }
 
+  // ---- persistence (offset-based) ----
+
+  function textNodesOf(root) {
+    const doc = root.ownerDocument || document;
+    const out = [];
+    const walker = doc.createTreeWalker(root, NodeFilter.SHOW_TEXT, null);
+    let n;
+    while ((n = walker.nextNode())) out.push(n);
+    return out;
+  }
+
+  // Character offsets of every highlighted span within `root`'s plain text.
+  // Marks that are textually adjacent collapse into one range.
+  function rangesOf(root) {
+    const full = root.textContent;
+    const spans = [];
+    let pos = 0;
+    textNodesOf(root).forEach((node) => {
+      const len = node.nodeValue.length;
+      const parent = node.parentNode;
+      const inHl = parent && parent.closest && parent.closest(".hl");
+      if (inHl && root.contains(inHl)) {
+        const last = spans[spans.length - 1];
+        if (last && last.end === pos) last.end = pos + len;
+        else spans.push({ start: pos, end: pos + len });
+      }
+      pos += len;
+    });
+    return spans.map((s) => ({ start: s.start, end: s.end, text: full.slice(s.start, s.end) }));
+  }
+
+  // Build a live DOM Range covering [start, end) of `body`'s plain text.
+  function rangeFromOffsets(body, start, end) {
+    const range = document.createRange();
+    let pos = 0;
+    let startSet = false;
+    const nodes = textNodesOf(body);
+    for (let i = 0; i < nodes.length; i++) {
+      const node = nodes[i];
+      const len = node.nodeValue.length;
+      if (!startSet && start < pos + len) {
+        range.setStart(node, start - pos);
+        startSet = true;
+      }
+      if (startSet && end <= pos + len) {
+        range.setEnd(node, end - pos);
+        return range;
+      }
+      pos += len;
+    }
+    return null;
+  }
+
   function save() {
     const out = { version: VERSION, sections: {} };
     bodies.forEach((section) => {
       if (!section.id) return;
       const body = section.querySelector(".study-body");
       if (!body) return;
-      if (body.querySelector(".hl")) {
-        out.sections[section.id] = body.innerHTML;
-      }
+      const ranges = rangesOf(body);
+      if (ranges.length) out.sections[section.id] = ranges;
     });
     try {
       if (Object.keys(out.sections).length === 0) {
@@ -198,14 +255,63 @@
     let raw;
     try { raw = localStorage.getItem(STORAGE_KEY); } catch (_) { return; }
     if (!raw) return;
+
     let parsed;
     try { parsed = JSON.parse(raw); } catch (_) { return; }
-    if (!parsed || parsed.version !== VERSION || !parsed.sections) return;
+    if (!parsed || !parsed.sections) return;
+
+    let sections = parsed.sections;
+    let migrated = false;
+    if (parsed.version === "1") {
+      sections = migrateFromHtml(sections);
+      migrated = true;
+    } else if (parsed.version !== VERSION) {
+      return;
+    }
+
     bodies.forEach((section) => {
-      const html = parsed.sections[section.id];
-      if (!html) return;
+      const ranges = sections[section.id];
+      if (!Array.isArray(ranges) || ranges.length === 0) return;
       const body = section.querySelector(".study-body");
-      if (body) body.innerHTML = html;
+      if (body) applyRanges(body, ranges);
     });
+
+    if (migrated) save(); // rewrite storage in the new format
+  }
+
+  function applyRanges(body, ranges) {
+    // Order doesn't matter: wrapping text in <mark> splits text nodes but adds
+    // no characters, so every range's offsets stay valid as we go.
+    ranges
+      .filter((r) => r && typeof r.start === "number" && typeof r.end === "number" && r.end > r.start)
+      .forEach((r) => {
+        let { start, end } = r;
+        const full = body.textContent;
+        // If the guide's wording shifted since this was saved, relocate by text.
+        if (typeof r.text === "string" && r.text.length && full.slice(start, end) !== r.text) {
+          const found = full.indexOf(r.text);
+          if (found === -1) return; // content changed too much — drop it
+          start = found;
+          end = found + r.text.length;
+        }
+        const range = rangeFromOffsets(body, start, end);
+        if (range) wrapTextNodesInRange(range, body);
+      });
+  }
+
+  // v1 stored each section's rendered innerHTML. Parse it inertly with
+  // DOMParser (no script execution, no resource loads) purely to recover the
+  // offsets, then throw the markup away — it never reaches the live page.
+  function migrateFromHtml(sectionsHtml) {
+    const out = {};
+    Object.keys(sectionsHtml).forEach((id) => {
+      const html = sectionsHtml[id];
+      if (typeof html !== "string") return;
+      try {
+        const doc = new DOMParser().parseFromString(html, "text/html");
+        out[id] = rangesOf(doc.body);
+      } catch (_) {}
+    });
+    return out;
   }
 })();
