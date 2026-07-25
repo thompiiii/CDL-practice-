@@ -447,6 +447,31 @@ html, body {
 .verdict.pass { background: var(--correct-bg); color: var(--correct-text); }
 .verdict.fail { background: var(--wrong-bg); color: var(--wrong-text); }
 
+.breakdown-row { margin: 14px 0; }
+.breakdown-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 12px;
+  margin-bottom: 5px;
+}
+.breakdown-name { font-weight: 600; }
+.breakdown-score {
+  color: var(--muted);
+  font-size: 0.9rem;
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+}
+.breakdown-bar {
+  height: 8px;
+  background: var(--track);
+  border-radius: 4px;
+  overflow: hidden;
+}
+.breakdown-fill { height: 100%; border-radius: 4px; }
+.breakdown-fill.ok { background: var(--correct); }
+.breakdown-fill.weak { background: var(--wrong); }
+
 .missed-item {
   border-top: 1px solid var(--border);
   padding: 12px 0;

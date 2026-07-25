@@ -24,6 +24,8 @@
     summaryScore:   document.getElementById("summary-score"),
     summaryPercent: document.getElementById("summary-percent"),
     summaryVerdict: document.getElementById("summary-verdict"),
+    breakdownWrap: document.getElementById("breakdown-wrap"),
+    breakdownList: document.getElementById("breakdown-list"),
     missedWrap:  document.getElementById("missed-wrap"),
     missedList:  document.getElementById("missed-list"),
   };
@@ -45,7 +47,7 @@
     const picked = shuffle(pool).slice(0, Math.min(TEST_SIZE, pool.length));
     // For each picked question, shuffle its choices and remap the answer index.
     return picked.map((q) => {
-      const indices = shuffle([0, 1, 2, 3]);
+      const indices = shuffle(q.choices.map((_, i) => i));
       const choices = indices.map((i) => q.choices[i]);
       const answer = indices.indexOf(q.answer);
       return {
@@ -66,6 +68,8 @@
       correct: 0,
       answered: false,
       missed: [],
+      // section name -> { correct, total }, used for the results breakdown.
+      sections: Object.create(null),
     };
     show("test");
     renderQuestion();
@@ -126,10 +130,14 @@
     });
 
     const isCorrect = chosen === q.answer;
+    const tally = state.sections[q.section] || (state.sections[q.section] = { correct: 0, total: 0 });
+    tally.total += 1;
     if (isCorrect) {
       state.correct += 1;
+      tally.correct += 1;
     } else {
       state.missed.push({
+        section: q.section,
         question: q.question,
         yourAnswer: q.choices[chosen],
         correctAnswer: q.choices[q.answer],
@@ -170,6 +178,8 @@
     el.summaryVerdict.textContent = passed ? "PASS" : "Keep studying";
     el.summaryVerdict.className = "verdict " + (passed ? "pass" : "fail");
 
+    renderBreakdown();
+
     if (state.missed.length === 0) {
       el.missedWrap.classList.add("hidden");
     } else {
@@ -178,6 +188,9 @@
       state.missed.forEach((m) => {
         const div = document.createElement("div");
         div.className = "missed-item";
+        const tag = document.createElement("span");
+        tag.className = "section-tag";
+        tag.textContent = m.section;
         const q = document.createElement("p");
         q.className = "missed-q";
         q.textContent = m.question;
@@ -194,6 +207,7 @@
         const why = document.createElement("p");
         why.className = "missed-a";
         why.textContent = m.explanation;
+        div.appendChild(tag);
         div.appendChild(q);
         div.appendChild(you);
         div.appendChild(ok);
@@ -204,6 +218,50 @@
 
     show("summary");
     window.scrollTo({ top: 0, behavior: "smooth" });
+  }
+
+  // Per-section results, weakest first, so it's obvious what to restudy.
+  function renderBreakdown() {
+    const rows = Object.keys(state.sections).map((name) => {
+      const t = state.sections[name];
+      return { name, correct: t.correct, total: t.total, pct: (t.correct / t.total) * 100 };
+    });
+    if (rows.length === 0) {
+      el.breakdownWrap.classList.add("hidden");
+      return;
+    }
+    rows.sort((a, b) => a.pct - b.pct || a.name.localeCompare(b.name));
+
+    el.breakdownList.innerHTML = "";
+    rows.forEach((r) => {
+      const pct = Math.round(r.pct);
+      const row = document.createElement("div");
+      row.className = "breakdown-row";
+
+      const head = document.createElement("div");
+      head.className = "breakdown-head";
+      const name = document.createElement("span");
+      name.className = "breakdown-name";
+      name.textContent = r.name;
+      const score = document.createElement("span");
+      score.className = "breakdown-score";
+      score.textContent = r.correct + " / " + r.total + " (" + pct + "%)";
+      head.appendChild(name);
+      head.appendChild(score);
+
+      const bar = document.createElement("div");
+      bar.className = "breakdown-bar";
+      const fill = document.createElement("div");
+      // Below the 80% pass mark reads as a weak spot.
+      fill.className = "breakdown-fill " + (pct >= PASS_PERCENT ? "ok" : "weak");
+      fill.style.width = pct + "%";
+      bar.appendChild(fill);
+
+      row.appendChild(head);
+      row.appendChild(bar);
+      el.breakdownList.appendChild(row);
+    });
+    el.breakdownWrap.classList.remove("hidden");
   }
 
   // Keyboard shortcuts while the test is active.
