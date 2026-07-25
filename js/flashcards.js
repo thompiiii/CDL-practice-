@@ -64,9 +64,20 @@
     el.sectionTag.textContent = c.section;
     el.sectionTagB.textContent = c.section;
     el.counter.textContent = (idx + 1) + " / " + deck.length;
-    el.card.setAttribute("aria-pressed", "false"); // reset to front when changing cards
+    resetFlip();
     el.prev.disabled = idx === 0;
     el.next.disabled = idx === deck.length - 1;
+  }
+
+  // Reset to the front face WITHOUT animating. If we let the flip-back animate
+  // after the new text is already in the DOM, the user watches the next card's
+  // answer rotate away — spoiling it.
+  function resetFlip() {
+    if (el.card.getAttribute("aria-pressed") !== "true") return;
+    el.card.classList.add("no-anim");
+    el.card.setAttribute("aria-pressed", "false");
+    void el.card.offsetWidth; // force reflow so the change lands with no transition
+    el.card.classList.remove("no-anim");
   }
 
   function flip() {

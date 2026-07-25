@@ -521,6 +521,11 @@ html, body {
 .flashcard[aria-pressed="true"] .flashcard-inner {
   transform: rotateY(180deg);
 }
+/* Set briefly while resetting to the front on card change, so the flip-back
+   doesn't animate and reveal the incoming card's answer. */
+.flashcard.no-anim .flashcard-inner {
+  transition: none;
+}
 .flashcard-face {
   position: absolute;
   inset: 0;
